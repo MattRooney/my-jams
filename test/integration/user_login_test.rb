@@ -13,4 +13,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Welcome, Matt!")
     assert page.has_content?("Logout")
   end
+
+  
 end
