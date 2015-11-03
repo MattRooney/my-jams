@@ -2,8 +2,6 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update] # ==> allows you to delete lines in show, edit, update methods, will call set_song before doing anything else in these methods
 
   def index
-    session[:most_recent_song_id] = session[:most_recent_song_id].to_i + 1
-
     @songs_index = Song.all
   end
 
@@ -17,10 +15,11 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
+      session[:most_recent_song_id] = @song.id
       redirect_to songs_path
-      flash[:notice] = "Song created successfully!"
+      flash[:notice] = "Song created!"
     else
-      flash.now[:errors] = @song.errors.full_messages.join(", ")
+      flash[:errors] = @song.errors.full_messages.join(", ")
       render :new
     end
   end
