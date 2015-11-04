@@ -7,13 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-  <% if current_user %>
-    <%= link_to "Logout", logout_path, method: :delete %>
-  <% else %>
-    <%= link_to "Login", login_path %>
-  <% end %>
-</div>
+  
+  <div class="log_status">
+    <% if current_user %>
+      <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
+  </div>
 
   <p>
     <strong>Newest song:</strong> <%#= most_recent_song.title %>
@@ -24,6 +25,8 @@
     <% end %>
 
   <%= yield %>
-
+  <br></br>
+  <%= link_to "New Song", new_song_path %> |
+  <%= link_to "Song Index", songs_path %>
 </body>
 </html>

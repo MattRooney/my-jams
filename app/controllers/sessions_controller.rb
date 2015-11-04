@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       redirect_to login_path
+      flash[:invalid_login] = "Invalid Login"
     end
   end
 

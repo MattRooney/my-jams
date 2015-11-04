@@ -8,14 +8,15 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user
+      flash[:new_user] = "You've successfully registered"
     else
-      #
+      flash.now[:invalid_user] = "Try again. Username and Password are required"
+      render :new
     end
   end
 
   def show
   end
-
 
   private
 
