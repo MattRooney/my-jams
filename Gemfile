@@ -38,6 +38,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'capybara'
   gem 'launchy'
+  gem 'mocha'
 end
 
 group :development do

@@ -10,12 +10,13 @@ class UsersController < ApplicationController
       redirect_to @user
       flash[:new_user] = "You've successfully registered"
     else
-      flash.now[:invalid_user] = "Try again. Username and Password are required"
+      flash.now[:error] = "Try again. Username and Password are required"
       render :new
     end
   end
 
   def show
+    @user = User.find_by(username: params[:username])
   end
 
   private
